@@ -1,3 +1,1 @@
-# theayushr.github.io
-
-Namaste Ji
+# Namaste Ji
