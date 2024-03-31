@@ -1,54 +1,199 @@
 <!DOCTYPE html>
-<html>
-
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ayush Rawat</title>
-	<link rel="icon" type="image/x-icon" href="img/heart.png">
-	<link rel="stylesheet" href="mycss.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar System</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background-color: #000;
+    }
+    #solar-system {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .planet {
+        position: absolute;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Add glow effect */
+    }
+    #sun {
+        width: 140px; /* Increased size of the sun */
+        height: 140px; /* Increased size of the sun */
+        background: radial-gradient(circle, rgba(255,255,200,1) 20%, rgba(255,215,100,1) 50%, rgba(255,165,0,1) 100%);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 50px rgba(255, 255, 255, 0.8); /* Add glow effect */
+    }
+    .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+    #mercury {
+        width: 15px;
+        height: 15px;
+        background-color: #f2f2f2; /* Adjusted color */
+        top: 50%;
+        left: 25%;
+    }
+    #venus {
+        width: 30px;
+        height: 30px;
+        background-color: #ffecb3; /* Adjusted color */
+        top: 40%;
+        left: 10%;
+        border-radius: 15px; /* Adjusted border radius */
+    }
+    #earth {
+        width: 40px; /* Adjusted size of Earth */
+        height: 40px; /* Adjusted size of Earth */
+        background-color: #0056b3; /* Original Earth color */
+        top: 50%;
+        left: 55%;
+    }
+    #moon {
+        width: 20px; /* Adjusted size of Moon */
+        height: 20px; /* Adjusted size of Moon */
+        background-color: #f2f2f2; /* Adjusted color */
+        border-radius: 50%;
+        position: absolute;
+    }
+    #mars {
+        width: 20px;
+        height: 20px;
+        background-color: #ff9966; /* Adjusted color */
+        top: 55%;
+        left: 80%;
+    }
+    #jupiter {
+        width: 80px;
+        height: 40px;
+        background-color: #e68a00; /* Adjusted color */
+        top: 20%;
+        left: 35%;
+        border-radius: 40px; /* Adjusted border radius */
+    }
+    #saturn {
+        width: 70px;
+        height: 70px;
+        background-color: #ffea00; /* Adjusted color */
+        top: 25%;
+        left: 70%;
+        border-radius: 50%;
+        transform: scale(1.2);
+    }
+    #uranus {
+        width: 50px;
+        height: 50px;
+        background-color: #66ffff; /* Adjusted color */
+        top: 70%;
+        left: 15%;
+        border-radius: 50%;
+    }
+    #neptune {
+        width: 40px;
+        height: 40px;
+        background-color: #66b3ff; /* Adjusted color */
+        top: 75%;
+        left: 85%;
+        border-radius: 50%;
+    }
+</style>
 </head>
+<body>
+<div id="solar-system">
+    <div id="sun"></div>
+    <div id="mercury" class="planet"></div>
+    <div id="venus" class="planet"></div>
+    <div id="earth" class="planet"></div>
+    <div id="moon" class="planet"></div>
+    <div id="mars" class="planet"></div>
+    <div id="jupiter" class="planet"></div>
+    <div id="saturn" class="planet"></div>
+    <div id="uranus" class="planet"></div>
+    <div id="neptune" class="planet"></div>
+</div>
+<script>
+    // Planet properties
+    const planets = [
+        { name: 'mercury', radius: 100, speed: 0.005 },
+        { name: 'venus', radius: 150, speed: 0.004 },
+        { name: 'earth', radius: 200, speed: 0.003 },
+        { name: 'moon', radius: 30, speed: 0.0055 }, // Adjusted moon's properties
+        { name: 'mars', radius: 250, speed: 0.002 },
+        { name: 'jupiter', radius: 350, speed: 0.001 },
+        { name: 'saturn', radius: 450, speed: 0.0007 },
+        { name: 'uranus', radius: 550, speed: 0.0005 },
+        { name: 'neptune', radius: 650, speed: 0.0004 }
+    ];
 
+    // Animation loop for planets
+    function animatePlanets() {
+        const sun = document.getElementById('sun');
+        const centerX = sun.offsetLeft + sun.offsetWidth / 2;
+        const centerY = sun.offsetTop + sun.offsetHeight / 2;
 
+        planets.forEach(planet => {
+            const orbiter = document.getElementById(planet.name);
+            const angle = Date.now() * planet.speed;
+            const x = centerX + planet.radius * Math.cos(angle);
+            const y = centerY + planet.radius * Math.sin(angle);
+            orbiter.style.left = x + 'px';
+            orbiter.style.top = y + 'px';
+        });
 
+        requestAnimationFrame(animatePlanets);
+    }
 
-<body bgcolor="#E5E8E8">
-	<div><center>
-		 
+    // Create stars
+    const solarSystem = document.getElementById('solar-system');
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        solarSystem.appendChild(star);
+    }
 
-		<br><br><br>
-		<img src="img/ayushrt.jpg" alt = "avatar" width="175" height="175">
-		<h1><b> About Ayush </b></h1>
+    // Animation loop for stars
+    function animateStars() {
+        const stars = document.getElementsByClassName('star');
+        const numStars = stars.length;
 
+        for (let i = 0; i < numStars; i++) {
+            const star = stars[i];
+            const left = parseFloat(star.style.left);
+            const top = parseFloat(star.style.top);
+            const dx = Math.random() * 0.5 - 0.25; // Adjusted speed here
+            const dy = Math.random() * 0.5 - 0.25; // Adjusted speed here
+            const newLeft = left + dx;
+            const newTop = top + dy;
 
-		 <p> Hi, I'm Ayush Rawat<br>
-		 Masters of Computer Applications<br>Manipal University Jaipur <p>
+            if (newLeft < 0 || newLeft > 100 || newTop < 0 || newTop > 100) {
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+            } else {
+                star.style.left = newLeft + '%';
+                star.style.top = newTop + '%';
+            }
+        }
 
+        requestAnimationFrame(animateStars);
+    }
 
-
-		 <a href="https://www.linkedin.com/in/theayushr/" target="_blank">
-		 	<img src="img/linkedin.png" width="60" height="60">
-		 </a> &emsp;
-
-		 <a href="https://drive.google.com/file/d/10FJY_SNc8zIY1lJNGDmZltwG93Zz191X/view?usp=sharing" target="_blank">
-		 	<img src="img/resume.png" alt="resume" height="60" width = "60">
-		 </a>&emsp;
-
-
-		 <a href="https://www.github.com/theayushr" target="_blank">
-		 	<img src="img/github.png" alt="github" height="60" width = "60">
-		 </a>
-
-
-		 <p>Email : ayushrawat3338@gmail.com</p>
-
-		 <div class="topright"><a href="Pen/index.html" target="_blank"> Musings </a></div>
-
-
-	</center>
-	</div>
-	
+    animatePlanets();
+    animateStars();
+</script>
 </body>
 </html>
