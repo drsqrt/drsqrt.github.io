@@ -1,5 +1,5 @@
 const canvas = document.getElementById("canvas");
-console.log("hello world");
+console.log("Welcome to Ayush Rawat's page :)");
 canvas.textContent = "Jai Shree Ram";
 canvas.addEventListener("mouseover", (event) => {
   canvas.textContent = "Radhe Radhe";
