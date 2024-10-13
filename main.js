@@ -1,11 +1,6 @@
+const body = document.getElementById("body");
 const canvas = document.getElementById("canvas");
-console.log("Welcome to Ayush Rawat's page :)");
-canvas.textContent = "Jai Shree Ram";
-canvas.addEventListener("mouseover", (event) => {
-  canvas.textContent = "Radhe Radhe";
-  canvas.style.color = "purple";
-});
-canvas.addEventListener("mouseleave", (event) => {
-  canvas.textContent = "Jai Shree Ram";
-  canvas.style.color = "black";
-});
+const text = document.getElementById("text");
+
+text.textContent = "Jai Shree Ram";
+text.style.color = "white";
