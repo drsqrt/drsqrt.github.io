@@ -4,3 +4,7 @@ const text = document.getElementById("text");
 
 text.textContent = "Jai Shree Ram";
 text.style.color = "white";
+
+text.addEventListener("click", function () {
+  text.style.color = "yellow";
+});
