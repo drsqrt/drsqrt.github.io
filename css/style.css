@@ -7,10 +7,15 @@ html, body {
   height: 100%;
   display: flex;
   justify-content: center;
+  gap: 10px;
   align-items: center;
   background-color: rgb(18, 18, 18);
 }
 
 #txt {
   color: white;
+}
+
+.sqrt {
+  
 }
